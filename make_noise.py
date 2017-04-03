@@ -113,6 +113,15 @@ def random_ebay():
     print("Ebay not implemented yet ... ")
 
 # loop to start the functions and visits
+start = time.time()
+
 while(1):
-    rnd_site = choice(linklist)
-    eval(sites_dict[rnd_site])
+    try:
+        rnd_site = choice(linklist)
+        eval(sites_dict[rnd_site])
+    except KeyBoardInterrupt as e:
+        duration = time.time() - start
+        print("You've been making noise for {} hours".format(duration/3600.0))
+        break
+    except:
+        print("Caught an exception, continuing.")
